@@ -1,32 +1,105 @@
 body {
-  font-family: sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #f8f8f8;
-  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  padding: 0;
+  margin: 0;
+  color: #333;
 }
 
+/* HEADER */
+header {
+  background-color: white;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* fixed typo: removed extra parenthesis */
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #222;
+}
+
+/* MAIN CONTAINER */
 .container {
-  position: relative;
+  max-width: 600px;
+  background: white;
+  margin: 40px auto;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
+/* FORM INPUT & BUTTON */
+input[type="text"] {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  border-color: #28a745;
+  outline: none;
+  box-shadow: 0 0 6px rgba(40, 167, 69, 0.5);
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
+  transform: scale(1.05);
+}
+
+/* RESTAURANT LIST */
+#restaurant-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 15px;
+}
+
+#restaurant-list li {
+  background: #e9ecef;
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+}
+
+/* RESULT DISPLAY */
+#choose-restaurant {
+  margin-top: 10px;
+  font-size: 1.25rem;
+  color: #444;
+  font-weight: 500;
+}
+
+/* WHEEL STYLES */
 .wheel {
   width: 300px;
   height: 300px;
   border-radius: 50%;
   border: 6px solid #333;
   position: relative;
+  margin: 0 auto;
   transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
-  background: conic-gradient(
-    hsl(0, 70%, 70%) 0deg 60deg,
-    hsl(60, 70%, 70%) 60deg 120deg,
-    hsl(120, 70%, 70%) 120deg 180deg,
-    hsl(180, 70%, 70%) 180deg 240deg,
-    hsl(240, 70%, 70%) 240deg 300deg,
-    hsl(300, 70%, 70%) 300deg 360deg
-  );
+  background: #f1f1f1; /* fallback, overwritten by JS */
+  overflow: hidden;
 }
 
 .pointer {
@@ -36,6 +109,7 @@ body {
   transform: translateX(-50%);
   font-size: 2rem;
   color: red;
+  z-index: 10;
 }
 
 .label {

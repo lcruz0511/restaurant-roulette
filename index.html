@@ -7,13 +7,40 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="wheel" id="wheel">
-      <!-- Segments will be drawn via CSS -->
+  <header>
+    <h1>Restaurant Roulette</h1>
+    <p>Can't decide where to eat? Let fate choose for you!</p>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- Input Section -->
+      <section id="input-section">
+        <h2>Add a Restaurant</h2>
+        <form id="restaurant-form">
+          <input type="text" id="restaurant-input" placeholder="Restaurant Name" required />
+          <button type="submit">Add Restaurant</button>
+        </form>
+        <ul id="restaurant-list"></ul>
+      </section>
+
+      <!-- Roulette Section -->
+      <section id="roulette-section">
+        <h2>Feeling Lucky?</h2>
+        <div class="wheel-container">
+          <div class="wheel" id="wheel"></div>
+          <div class="pointer">▼</div>
+        </div>
+        <button id="spin-button">Spin the Wheel!</button>
+        <p id="choose-restaurant"></p>
+      </section>
     </div>
-    <div class="pointer">▼</div>
-    <button id="spinBtn">Spin</button>
-  </div>
+  </main>
+
+  <footer>
+    <p>&copy;2025 Leo Cruz - Restaurant Roulette</p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
