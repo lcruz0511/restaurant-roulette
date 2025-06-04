@@ -24,27 +24,33 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function drawWheel() {
-    wheel.innerHTML = ""; // Clear old wheel
-    const anglePerSlice = 360 / restaurants.length;
+    wheel.innerHTML = "";
+    const num = restaurants.length;
+    const anglePerSlice = 360 / num;
 
     restaurants.forEach((name, i) => {
       const angle = i * anglePerSlice;
 
+      const slice = document.createElement('div');
+      slice.className = 'slice';
+      slice.style.transform = `rotate(${angle}deg)`;
+
       const label = document.createElement('div');
       label.className = 'label';
-      label.style.setProperty('--angle', `${angle}deg`);
-      label.style.transform = `rotate(${angle}deg)`;
 
       const text = document.createElement('span');
       text.textContent = name;
-      text.style.transform = `rotate(-${angle}deg) translateY(20px)`;
+      text.style.transform = `rotate(-${angle}deg) translateY(-120px)`;
 
       label.appendChild(text);
-      wheel.appendChild(label);
+      slice.appendChild(label);
+      wheel.appendChild(slice);
     });
 
-    // Update wheel background using conic-gradient
-    const colors = restaurants.map((_, i) => `hsl(${i * (360 / restaurants.length)}, 70%, 70%) ${i * anglePerSlice}deg ${(i + 1) * anglePerSlice}deg`);
+    // Create conic gradient background
+    const colors = restaurants.map((_, i) =>
+      `hsl(${i * (360 / restaurants.length)}, 70%, 70%) ${i * anglePerSlice}deg ${(i + 1) * anglePerSlice}deg`
+    );
     wheel.style.background = `conic-gradient(${colors.join(',')})`;
   }
 
@@ -62,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     wheel.style.transform = `rotate(${rotation}deg)`;
 
     setTimeout(() => {
-      resultDisplay.textContent = `🎯 You should eat at: ${restaurants[selected]}`;
+      resultDisplay.textContent = `🎯 You should eat: ${restaurants[selected]}`;
     }, 4000);
   });
 });
